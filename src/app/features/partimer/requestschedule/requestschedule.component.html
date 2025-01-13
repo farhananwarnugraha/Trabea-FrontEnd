@@ -1,0 +1,30 @@
+<p>You are eligible to apply for shifts between <span class="font-bold">{{ dateMin }} - {{ dateMax }}</span></p>
+<div class="container w-full">
+  <form (ngSubmit)="onSubmit()" [formGroup]="requestScheduleForm">
+    <div>
+      <input type="text" hidden  formControlName="partTimerId" value="{{ partTimer }}">
+    </div>
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-800">Chose Date</label>
+      <input
+        type="date"
+        id="name"
+        formControlName="workDate"
+        [min]="minDate"
+        [max]="maxDate"
+        class="block p-2 w-full border border-gray-950 rounded-md shadow-sm focus:border-blue-300">
+    </div>
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-800">Chose Shift</label>
+      <select id="name" formControlName="shiftId" class="block p-2 w-full border border-gray-950 rounded-md shadow-sm focus:border-blue-300">
+        <option [value]="0" selected>Choose Shift</option>
+        @for (shift of shifts; track $index) {
+          <option [value]="shift.id">Shsift {{ shift.id }} ({{ shift.shiftTime }})</option>
+        }
+      </select>
+    </div>
+    <div class="mt-3">
+      <button class="bg-blue-500 text-white rounded-md px-4 py-2">Submit</button>
+    </div>
+  </form>
+</div>

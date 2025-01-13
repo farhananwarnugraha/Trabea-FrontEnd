@@ -1,0 +1,54 @@
+<div class="container w-full p-6 border shadow-md rounded-md">
+  <button [routerLink]="['/part-time-employees']" class="mt-2 bg-red-500 text-white rounded-md px-4 py-2">
+    Kembali
+  </button>
+  <form [formGroup]="formControl" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-800">First Name</label>
+      <input type="text" id="name" formControlName="firstName" class="block p-2 w-full border border-gray-950 rounded-md shadow-sm focus:border-blue-300">
+    </div>
+    <div>
+      <label for="lastName" class="block text-sm font-medium text-gray-800">Last Name</label>
+      <input type="text" id="lastName" formControlName="lastName" class="mt-1 block p-2 w-full border border-gray-950 rounded-md shadow-sm focus:border-blue-300">
+    </div>
+    <div>
+      <label for="address" class="block text-sm font-medium text-gray-800">Address</label>
+      <textarea formControlName="address" id="address" class="mt-1 block p-2 w-full border border-gray-950 rounded-md shadow-sm focus:border-blue-300"></textarea>
+    </div>
+    <div>
+      <label for="personalEmail" class="block text-sm font-medium text-gray-800">Personal Email</label>
+      <input type="email" id="personalEmail" formControlName="personalEmail" class="mt-1 block p-2 w-full border border-gray-950 rounded-md shadow-sm focus:border-blue-300">
+    </div>
+    <div>
+      <label for="phoneNumber"  class="block text-sm font-medium text-gray-800">Phone Number</label>
+      <input type="text" id="phoneNumber" formControlName="personalPhoneNumber" class="mt-1 block p-2 w-full border border-gray-950 rounded-md shadow-sm focus:border-blue-300">
+    </div>
+    <div>
+      <label for="lastEducation" class="block text-sm font-medium text-gray-800">Last Education</label>
+      <select id="lastEducation" formControlName="lastEducation" class="mt-1 block p-2 w-full border border-gray-950 rounded-md shadow-sm focus:border-blue-300">
+        <option value="" selected>Choose Last Education</option>
+        <option value="ElementarySchool">Elementary School</option>
+        <option value="JuniorSchool">Junior School</option>
+        <option value="HighSchool">High School</option>
+        <option value="Bachelor">University - Bachelor</option>
+        <option value="Master">University - Master</option>
+        <option value="Doctorate">University - Doctorate</option>
+      </select>
+    </div>
+    <div>
+      <label for="onGoingEducation" class="block text-sm font-medium text-gray-800">On Going Education</label>
+      <select id="onGoingEducation" formControlName="onGoingEducation" class="mt-1 block p-2 w-full border border-gray-950 rounded-md shadow-sm focus:border-blue-300">
+        <option value="" selected>Choose Last Education</option>
+        <option value="ElementarySchool">Elementary School</option>
+        <option value="JuniorSchool">Junior School</option>
+        <option value="HighSchool">High School</option>
+        <option value="Bachelor">University - Bachelor</option>
+        <option value="Master">University - Master</option>
+        <option value="Doctorate">University - Doctorate</option>
+      </select>
+    </div>
+    <div class="mt-1">
+      <button class="bg-blue-500 text-white rounded-md px-4 py-2">Submit</button>
+    </div>
+  </form>
+</div>

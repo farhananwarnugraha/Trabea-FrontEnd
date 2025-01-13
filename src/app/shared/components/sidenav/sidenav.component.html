@@ -1,0 +1,36 @@
+<div class="flex flex-col justify-between w-52 bg-gray-500 h-screen transition-all duration-100 overflow-hidden ">
+  <div>
+    <p class="font-bold text-center text-white text-lg m-4">Trabea</p>
+    <ul class="mt-14 text-white">
+      @if(role === 'Administrator'){
+        <li class="px-4 py-2 hover:bg-gray-800">
+          <a routerLink="/home">Dashboard</a>
+        </li>
+        <li class="px-4 py-2 hover:bg-gray-800">
+          <a [routerLink]="['parttimer']">Part Time Employee</a>
+        </li>
+      }
+      @else if (role === 'PartTimer') {
+        <li class="px-4 py-2 hover:bg-gray-800">
+          <a [routerLink]="['schedule']">Shift Schedule</a>
+        </li>
+        <li class="px-4 py-2 hover:bg-gray-800">
+          <a [routerLink]="['request-schedule']"  >Shift Submission</a>
+        </li>
+      }
+      @else if (role === 'Manager') {
+        <li class="px-4 py-2 hover:bg-gray-800">
+          <a [routerLink]="['managerial-schedule']">Shift Schedule</a>
+        </li>
+        <li class="px-4 py-2 hover:bg-gray-800">
+          <a [routerLink]="['schedule-review']">Review Shift</a>
+        </li>
+      }
+    </ul>
+  </div>
+  <div class="m-4 text-white italic">
+    <p>Logged in as:</p>
+    <p>{{ email }}</p>
+    <p>{{ role }}</p>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="p-6 border rounded mt-2">
+  <label for="search">Name : </label>
+  <input type="text" class="px-4 border rounded focus:outline-none">
+</div>
+
+<table class="border-collapse border border-slate-500">
+  <thead>
+    <tr>
+      @for (header of headers; track $index) {
+        <th class="border border-slate-600">{{ header }}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      @for (parttimeEmployee of partTimeEmployees; track $index) {
+        <td class="border border-slate-600">{{ parttimeEmployee.fullName }}</td>
+        <td class="border border-slate-600">{{ parttimeEmployee.personalEmail }}</td>
+        <td class="border border-slate-600">{{ parttimeEmployee.workEmail }}</td>
+        <td class="border border-slate-600">{{ parttimeEmployee.phoneNumber }}</td>
+        <td class="border border-slate-600">{{ parttimeEmployee.joinDate }}</td>
+        <td class="border border-slate-600">
+          <button class="bg-blue-600 p-2 text-white font-bold rounded-lg" [routerLink]="['/parttimeemployee/edit', parttimeEmployee.partTimeId]">
+            Edit
+          </button>
+        </td>
+      }
+    </tr>
+  </tbody>
+</table>

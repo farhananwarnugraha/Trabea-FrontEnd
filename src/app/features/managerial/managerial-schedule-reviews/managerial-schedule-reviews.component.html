@@ -1,0 +1,71 @@
+<div class="p-2 shadow-lg">
+  <!-- form filter -->
+  <form [formGroup]="filterForm" class="flex items-center gap-2">
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="partTimeName" class="border border-gray-600 rounded focus:outline-none">
+    <label for="shiftid">Shift</label>
+    <select formControlName="shiftId" id="shiftId" class="border border-gray-600 rounded focus:outline-none">
+      <option [value]="0">All Shift</option>
+      @for (shift of shifts; track $index) {
+        <option [value]="shift.id">Shsift {{ shift.id }} ({{ shift.shiftTime }})</option>
+      }
+    </select>
+    <label for="startDate">Stat Date Range</label>
+    <input type="date" id="startDate" formControlName="startDate" class=" border border-gray-600 rounded focus:outline-none">
+    <label for="endDate">End Date Range</label>
+    <input type="date" id="endDate" formControlName="endDate" class="border border-gray-600 rounded focus:outline-none">
+  </form>
+</div>
+
+<div class="mt-3 p-3">
+  <p class="text-right">Found {{ PartTimeEmployee.length * totalPage }} data</p>
+  <table class="border border-collapse border-gray-600 w-full">
+    <thead>
+      @for (header of headers; track $index) {
+        <th class="border border-gray-600">{{ header }}</th>
+      }
+    </thead>
+    <tbody>
+      @if (PartTimeEmployee.length > 0) {
+        @for (partTime of PartTimeEmployee; track $index) {
+          <tr class="text-center">
+            <td class="border border-gray-600">{{ partTime.partTimeName }}</td>
+            <td class="border border-gray-600">{{ partTime.purposeDate }}</td>
+            <td class="border border-gray-600">{{ partTime.shift }}</td>
+            <td class="border border-gray-600">
+              <button class="bg-green-600  p-3 text-white font-bold rounded-sm me-3" (click)="accept(partTime.scheduleId)">
+                Y
+              </button>
+              <button class="bg-red-600 p-3 text-white font-bold rounded-sm" (click)="reject(partTime.scheduleId)">
+                N
+              </button>
+            </td>
+          </tr>
+        }
+      }
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" class="text-center p-2">
+          <div class="flex justify-between">
+            <div>
+              <p>Page {{ filterForm.value.pageNumber }} Of {{ totalPage }}</p>
+            </div>
+            <div>
+            @for (item of [].constructor(totalPage); track $index; let index = $index){
+                <a
+                  class=""
+                  [routerLink]="['.']"
+                  [class.active]="filterForm.value.pageNumber === index + 1"
+                  [queryParams]="{pageNumber: index + 1}"
+                  queryParamsHandling="merge">
+                  {{ index + 1 }}
+                </a>
+              }
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
